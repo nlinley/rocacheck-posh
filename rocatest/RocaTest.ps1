@@ -168,7 +168,7 @@ process {
           $rsaparam = [Org.BouncyCastle.Crypto.Parameters.RsaKeyParameters]$x509.GetPublicKey()
           $isvuln = isVulnerable -rsakey $rsaparam
 
-          $x509 | select @{name='serial';expr = {$_.serialnumber.tostring()}}, subjectdn, isvalidnow, notbefore, notafter, @{name='isVulnerable';expr={$isvuln}}
+          $x509 | select @{name='serial';expr = {$_.serialnumber.tostring(16)}}, subjectdn, isvalidnow, notbefore, notafter, @{name='isVulnerable';expr={$isvuln}}
 
      }
 
